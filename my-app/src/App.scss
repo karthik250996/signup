@@ -1,0 +1,82 @@
+@import './styles/variables.scss';
+
+.App {
+  background-color: $background-color;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $text-color;
+  font-family: $font-family;
+}
+
+.maincontainer {
+  height: 90vh;
+  width: 90%;
+  padding: 2%;
+  background-color: $white-background;
+  border-radius: 10px;
+}
+
+.subcontainer {
+  height: 95%;
+  width: 100%;
+  padding: 2%;
+  background-color: $white-background;
+  border-radius: 10px;
+  position: relative;
+  background-image: url('./assests//images/drawing.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 10;
+}
+
+.content {
+  text-align: start;
+  width: 400px;
+  .header {
+    font-size: 34px;
+    font-weight: 800;
+    margin-top: 20%;
+  }
+
+  .text {
+    margin-top: 3%;
+  }
+
+  .start-btn {
+    background-color: $btn-background-color;
+    color: $white-background;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    padding: 5px 20px;
+    font-size: 12px;
+    margin-top: 10%;
+  }
+}
+
+.logo {
+  margin: 0 auto 0 2%;
+}
+
+.nav {
+  color: $background-color;
+  text-decoration: none;
+  &-item {
+    margin-right: 5%;
+  }
+  :hover {
+    text-decoration: none;
+  }
+  &-select {
+    font-weight: 800;
+    color: $background-color;
+    text-decoration: none;
+    :hover {
+      text-decoration: none;
+    }
+  }
+}
