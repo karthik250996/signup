@@ -9,7 +9,7 @@ export default (props) => {
     return (
         <Nav className="justify-content-end">
             <div className="logo"><b>YOUR   </b> LOGO</div>
-            <Nav.Item eventKey={1}>
+            <Nav.Item>
                 <Link to="/" className={getClassName('home', currentPage)}>
                     Home
                 </Link>

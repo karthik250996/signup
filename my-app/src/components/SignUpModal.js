@@ -1,39 +1,94 @@
 import React from 'react';
-import { Modal, Form, Button } from 'react-bootstrap';
+import { Modal, Form } from 'react-bootstrap';
 
-export default (props) => (
+const handleSubmit = (e) => {
+  console.log(e)
+}
+class Signup extends React.Component{
+  state = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    displayErrMsg: false,
+  }
+
+  updateFormData(field, value) {
+    console.log('fn')
+    this.setState({ [field]: value });
+  }
+
+  validateForm = (state) => (state.firstName.length &&
+    state.lastName.length && state.email.length && state.password.length)
+
+  handleSubmit() {
+    if (this.validateForm(this.state)) {
+      this.props.setModalState(false)
+    } else {
+      this.setState({ displayErrMsg: true })
+    }
+  }
+
+  render() {
+    const props = this.props;
+    const state = this.state;
+    const Error  = this.state.displayErrMsg;
+    return (
     <Modal show={props.modalState} onHide={() => props.setModalState(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Sign Up</Modal.Title>
+          <Modal.Title className="form">Sign Up</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <Form>
-          <Form.Group controlId="formBasicFirstName">
+          <Form.Group className="form" controlId="formBasicFirstName">
               <Form.Label>First Name</Form.Label>
-              <Form.Control type="text" placeholder=" Enter FirstName" />
+              <Form.Control type="text" placeholder="Enter FirstName"
+               onChange={(e) => this.updateFormData('firstName', e.target.value)} />
+               {(Error && !state.firstName.length) ? 
+                <Form.Text className="err-text">
+                  Please Enter First Name
+                </Form.Text> : null}
           </Form.Group>
 
-          <Form.Group controlId="formBasicLastName">
+          <Form.Group className="form" controlId="formBasicLastName">
             <Form.Label>Last Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter LastName" />
+            <Form.Control type="text" placeholder="Enter LastName"
+             onChange={(e) => this.updateFormData('lastName', e.target.value)} />
+             {(Error && !state.lastName.length) ? 
+                <Form.Text className="err-text">
+                  Please Enter Last Name
+                </Form.Text> : null}
           </Form.Group>
 
-          <Form.Group controlId="formBasicEmail">
+          <Form.Group className="form" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Control type="email" placeholder="Enter email"
+             onChange={(e) => this.updateFormData('email', e.target.value)} />
+             {(Error && !state.email.length) ? 
+                <Form.Text className="err-text">
+                  Please Enter Email
+                </Form.Text> : null}
           </Form.Group>
 
-          <Form.Group controlId="formBasicPassword">
+          <Form.Group className="form" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control type="password" placeholder="Password"
+             onChange={(e) => this.updateFormData('password', e.target.value)} />
+             {(Error && !state.password.length) ? 
+                <Form.Text className="err-text">
+                  Please Enter Password
+                </Form.Text> : null}
           </Form.Group>
-                  
         </Form>
         </Modal.Body>
         <Modal.Footer>
-        <Button variant="primary" type="submit" onClick={() => props.setModalState(false)}>
+          <button className="submit-btn" onClick={() => this.handleSubmit()}>
             Submit
-          </Button>
+          </button>
         </Modal.Footer>
       </Modal>
-)
+    )
+  }
+}
+
+export default Signup;

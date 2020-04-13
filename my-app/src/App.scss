@@ -80,3 +80,26 @@
     }
   }
 }
+
+.form {
+  font-family: $font-family;
+  color: $text-color;
+
+}
+
+.submit-btn {
+  background-color: $btn-background-color;
+  font-family: $font-family;
+  color: $white-background;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  padding: 5px 20px;
+  font-size: 12px;
+}
+
+.err-text {
+  color: red;
+  font-size: 10px;
+  font-family: $font-family;
+}
