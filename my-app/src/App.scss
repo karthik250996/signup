@@ -103,3 +103,11 @@
   font-size: 10px;
   font-family: $font-family;
 }
+
+.modal-content {
+  border-radius: 20px!important;
+  border: 10px solid $text-color!important;
+}
+.form-control {
+  border-radius: 10px!important;
+}

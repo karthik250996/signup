@@ -1,9 +1,6 @@
 import React from 'react';
 import { Modal, Form } from 'react-bootstrap';
 
-const handleSubmit = (e) => {
-  console.log(e)
-}
 class Signup extends React.Component{
   state = {
     firstName: '',
@@ -34,7 +31,7 @@ class Signup extends React.Component{
     const state = this.state;
     const Error  = this.state.displayErrMsg;
     return (
-    <Modal show={props.modalState} onHide={() => props.setModalState(false)}>
+      <Modal className="sign-modal" show={props.modalState} onHide={() => props.setModalState(false)}>
         <Modal.Header closeButton>
           <Modal.Title className="form">Sign Up</Modal.Title>
         </Modal.Header>
